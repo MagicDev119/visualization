@@ -1,0 +1,14 @@
+1. backend logic(used Node, express, Mongodb)
+   - User signup, login, logout, update user info, authorization(using jwt) check is completed.
+   - Vision APIs( get vision list, update, add new vision) is done.
+2. fontend side.
+   - basic structure is completed(routing, redux, api call)
+   - UI: Home, Login, signup, user info page is completed.
+
+Tomorrow:
+1. backend side
+   - check api for generating new vision and integrate to the project.
+2. frontend side
+   - UI: user setting, profile, visioning Meditation, visioning Exercise Page. 
+   - vision generating progress functionality
+   - integrating api.

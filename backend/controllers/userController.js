@@ -57,8 +57,8 @@ const getUser = function (req, res, next) {
 const update = async function (req, res, next) {
   try {
     let newUserData = {}
-    if (req.body.date) {
-      newUserData.date = req.body.date
+    if (req.body.birthday) {
+      newUserData.birthday = req.body.birthday
     }
     if (req.body.gender) {
       newUserData.gender = req.body.gender
@@ -72,8 +72,6 @@ const update = async function (req, res, next) {
     if (req.body.password) {
       newUserData.password = await JwtUtils.convertPasswordInBcrypt(req.body.password)
     }
-    console.log(req.body)
-    console.log(req.user)
 
     let finduser = await userModel.findOne({ _id: req.user.id, email: req.user.email })
     if (finduser === null) return res.status(404).send({ code: 404, message: "This user doesn't exist in our Database." })
@@ -84,8 +82,7 @@ const update = async function (req, res, next) {
       }, {
         $set: newUserData
       })
-      console.log(updatedUser)
-      if (updatedUser.modifiedCount > 0) return res.status(200).send({ code: 200, message: 'User updated Successfully.' })
+      if (updatedUser.modifiedCount > 0) return res.status(200).send({ code: 200, message: 'User updated Successfully.', newUserData })
       else return res.status(400).send({ code: 400, message: 'Failed.' })
     }
   } catch (error) {
